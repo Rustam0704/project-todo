@@ -57,6 +57,10 @@ def create_admin():
                                     ))
 
 
+def set_INACTIVE_user_status(username):
+    INACTIVE_user_status_sql = """update users set status=models.UserStatus.IN_ACTIVE.value where username=? """
+    cursor.execute(INACTIVE_user_status_sql, (username,))
+
 def increase_user_try_count(username):
     increase_try_count_sql = """update users set login_try_count=login_try_count+1 where username=? """
     cursor.execute(increase_try_count_sql, (username,))
