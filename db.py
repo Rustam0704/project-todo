@@ -60,6 +60,11 @@ def create_admin():
 def increase_user_try_count(username):
     increase_try_count_sql = """update users set login_try_count=login_try_count+1 where username=? """
     cursor.execute(increase_try_count_sql, (username,))
+
+def login_try_count_zero(username):
+    try_count_zero_sql = """update users set login_try_count=0 where username=? """
+    cursor.execute(try_count_zero_sql, (username,))
+
 def get_user_by_username(username:str):
     get_user_sql = "select id, username, password, status, role, login_try_count from users where username=?"
     cursor.execute(get_user_sql, (username, ))

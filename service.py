@@ -16,5 +16,5 @@ def login_user(username, password):
     if not utils.match_password(password, user.password):
         db.increase_user_try_count(username)
         return utils.ResponseDate("Bad Credintials password wrong")
-    # login_try_count must be zero
+    db.login_try_count_zero(username)
     return utils.ResponseDate(user)
